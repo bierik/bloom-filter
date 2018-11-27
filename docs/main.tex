@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 
 \title{Dist - Bloom Filter}
 \author{Kevin Bieri, Till Dreier, Cristian Lluis Araya}
@@ -15,7 +16,7 @@
 Ein Bloom-Filter ist eine Funktion mit der überprüft werden kann ob ein Element in einer Menge vorkommt. Es kann vorkommen, dass ein Element fälschlicherweise als Element der Menge angegeben wird obwohl es nicht vorkommt (False Positive). Andererseits werden Elemente aus der Menge zu 100\% erkannt.
 \\
 \\
-Der Filter verwendet ein Boolean Array der Grösse {m} und {k} Hashfunktionen. Mit der Hashfunktion wird dann die Entsprechende Position im Array auf true gesetzt.\citep{wikipediaBloomFilter}
+Der Filter verwendet ein Boolean Array der Grösse {m} und {k} Hashfunktionen. Mit der Hashfunktion wird dann die Entsprechende Position im Array auf true gesetzt.
 
 \section{Vorteile}
 \begin{itemize}
@@ -31,7 +32,7 @@ Der Filter verwendet ein Boolean Array der Grösse {m} und {k} Hashfunktionen. M
 \end{itemize}
 
 \section{Beispiel aus Praxis}
-Relationale Datenbanken wie z.B. Postgresql benützen einen Bloom filter um Festplattenzugriffe auf nicht extistierenden Einträgen zu reduzieren. Dieses Leistungsoptimierung erhöht die Geschwindigkeit bei Datenbankabfragen.\citep{wikipediaApplications}
+Relationale Datenbanken wie z.B. Postgresql benützen einen Bloom filter um Festplattenzugriffe auf nicht extistierenden Einträgen zu reduzieren. Dieses Leistungsoptimierung erhöht die Geschwindigkeit bei Datenbankabfragen.
 
 \section{Testing}
 Um die Fehlerwahrscheinlichkeit unseres Bloom-Filters zu testen haben wir zuerst mit wenigen Wörtern unseren Filter getestet. Danach haben wir eine Testdatei mit rund 6'000 Wörtern erstellt und damit die Fehlerwahrscheinlichkeit überprüft.
@@ -42,7 +43,9 @@ Unser Test mit 6025 Wörtern erkannte 123 False Positives was einer Fehlerwahrsc
 \\
 Für den Test wurde ein Array in der Länge {m} = 556'988 und {k} = 7 verschiedenen Hashfunktionen verwendet. Als gewünschte Fehlerwahrscheinlichkeit wurde 0,01\% angegeben.
 \\
-Zur Berechnung von {m} und {k} haben wir die Formeln von Wikipedia verwendet.\citep{wikipediaNumberOfHash}
+Zur Berechnung von {m} und {k} haben wir die Formeln von
+\href{https://en.wikipedia.org/wiki/Bloom_filter}{Wikipedia}
+verwendet.
 
 \pagebreak
 
